@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class PartyTemplate : MonoBehaviour
 {
     public int ID { get; private set; }
-    [SerializeField] private Text partyName;
+    [SerializeField] private Text partyName_txt;
+    public string partyName { get; private set; }
     public List<CharIDandAmount> members { get; private set; }
     private Button _thisButton;
 
@@ -25,14 +26,15 @@ public class PartyTemplate : MonoBehaviour
         isSelected = !isSelected;
     }
 
-    public void SetData(List<CharIDandAmount> partyMembers, string partyName)
+    public void SetData(List<CharIDandAmount> partyMembers, string nameOfParty)
     {
-        this.partyName.text = partyName;
+        partyName = nameOfParty;
         members = partyMembers;
     }
 
     private void Update()
     {
+        partyName_txt.text = partyName;
         selectedFrame.gameObject.SetActive(isSelected);
     }
 }

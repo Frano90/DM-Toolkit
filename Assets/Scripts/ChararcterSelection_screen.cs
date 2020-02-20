@@ -61,8 +61,36 @@ public class ChararcterSelection_screen : Screen
 
     private void TurnOnNamePanel()
     {
+        if (!ValidateParty())
+            return;
+        
         partynamePanel.SetActive(true);
     }
+
+    private bool ValidateParty()
+    {
+        List<CharacterTemplate> aux = new List<CharacterTemplate>();
+        
+        foreach (CharacterTemplate ct in templates)
+        {
+            if (ct.isSelected)
+            {
+                aux.Add(ct);
+            }
+        }
+
+        if (aux.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+    
+    
     
     private void CreateParty()
     {

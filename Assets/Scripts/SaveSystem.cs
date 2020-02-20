@@ -74,7 +74,9 @@ public static class SaveSystem
 
     public static void ResetData()
     {
+        List<Character> zeroCharacters = new List<Character>();
         List<PartyDATA> zeroParties = new List<PartyDATA>();
         SaveParties(zeroParties);
+        SaveCharacters(zeroCharacters);
     }
 }

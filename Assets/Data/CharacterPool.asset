@@ -17,10 +17,6 @@ MonoBehaviour:
   - integrantes:
     - charID: 1
       amount: 5
-  - integrantes:
-    - charID: 1
-      amount: 5
-  currentBattleCharacters:
-  - charID: 1
-    amount: 5
-  idCharacterCount: 0
+  - integrantes: []
+  currentBattleCharacters: []
+  idCharacterCount: 1

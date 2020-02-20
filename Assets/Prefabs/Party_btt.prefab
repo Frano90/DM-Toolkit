@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97d8ce76121c40f5a6fa860d252df61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partyName: {fileID: 4304760152242589110}
+  partyName_txt: {fileID: 4304760152242589110}
   selectedFrame: {fileID: 3627358411662454086}
 --- !u!1 &6192802437681237097
 GameObject:

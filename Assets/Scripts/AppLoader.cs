@@ -8,6 +8,8 @@ public class AppLoader : MonoBehaviour
     
     void Start()
     {
+        //SaveSystem.ResetData();
+        
         LoadCharacters();
         LoadParties();
     }

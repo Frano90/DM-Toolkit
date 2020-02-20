@@ -22,5 +22,6 @@ public enum ScreenType
     CharacterSelection,
     PartySelection,
     Battle,
-    CharacterRooster
+    CharacterRooster,
+    PartiesRooster
 }

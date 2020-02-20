@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_DM-Toolkit.-1343596758.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="AppLoader.cs" t="Include" />
+          <e p="Battle_screen.cs" t="Include" />
+          <e p="BattleEntity.cs" t="Include" />
+          <e p="BattleEntityCondition.cs" t="Include" />
+          <e p="Character.cs" t="Include" />
+          <e p="CharacterCreation_screen.cs" t="Include" />
+          <e p="CharacterPool.cs" t="Include" />
+          <e p="CharacterRooster_screen.cs" t="Include" />
+          <e p="CharacterRoosterTemplate.cs" t="Include" />
+          <e p="Characters_SavedData.cs" t="Include" />
+          <e p="CharacterTemplate.cs" t="Include" />
+          <e p="ChararcterSelection_screen.cs" t="Include" />
+          <e p="CharIDandAmount.cs" t="Include" />
+          <e p="Condition_handler.cs" t="Include" />
+          <e p="ConditionDATA.cs" t="Include" />
+          <e p="ConditionSlot.cs" t="Include" />
+          <e p="ConditionsPopUp_handler.cs" t="Include" />
+          <e p="MainMenu_screen.cs" t="Include" />
+          <e p="Parties_SavedData.cs" t="Include" />
+          <e p="PartyDATA.cs" t="Include" />
+          <e p="PartyRooster_screen.cs" t="Include" />
+          <e p="PartySelection_screen.cs" t="Include" />
+          <e p="PartyTemplate.cs" t="Include" />
+          <e p="PCorNPC_btt.cs" t="Include" />
+          <e p="SaveSystem.cs" t="Include" />
+          <e p="Screen.cs" t="Include" />
+          <e p="Screen_controller.cs" t="Include" />
+        </e>
+      </e>
+      <e p="DM-Toolkit.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

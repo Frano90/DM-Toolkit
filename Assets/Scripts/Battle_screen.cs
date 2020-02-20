@@ -105,10 +105,11 @@ public class Battle_screen : Screen
             for (int i = 0; i < c.amount; i++)
             {
                 BattleEntity newEntity = Instantiate<BattleEntity>(entity_prefab, characterParent);
-                newEntity.SetData(newChar.MaxHP, newChar.characterName, newChar.IniciativeModifier, count);
+                newEntity.SetData(newChar.MaxHP, newChar.characterName + " " + i, newChar.IniciativeModifier, count);
                 _battleEntities.Add(newEntity);
                 count++;
-                newEntity.onPressedConditionPanelToggle += ToggleConditionPanel;    
+                newEntity.onPressedConditionPanelToggle += ToggleConditionPanel;
+                newEntity.onPressedDelete += RemoveEntityFromBattle;
             }
             
         }
@@ -123,7 +124,16 @@ public class Battle_screen : Screen
 
     private void PassTurnToNextInLine()
     {
+        //Quede aca. La queue queda vacia
+        if (colaDeIniciativa.Count == 0)
+            return;
+        
         BattleEntity entToLastInLine = colaDeIniciativa.Dequeue();
+        while (entToLastInLine == null)
+        {
+            entToLastInLine = colaDeIniciativa.Dequeue();
+        }
+        
         entToLastInLine.transform.SetParent(characterParent_aux);
         entToLastInLine.transform.SetParent(characterParent);
         entitiesAlreadyUsedTurn.Enqueue(entToLastInLine);
@@ -153,6 +163,13 @@ public class Battle_screen : Screen
         conditionPanel.gameObject.SetActive(!conditionPanel.gameObject.activeInHierarchy);
         conditionPanel.SetCurrentBattleEntity(ent);
     }
+
+    private void RemoveEntityFromBattle(BattleEntity ent)
+    {
+        _battleEntities.Remove(ent);
+        Destroy(ent.gameObject);
+    }
+    
     
     
 }

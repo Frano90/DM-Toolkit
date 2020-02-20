@@ -43,12 +43,27 @@ public class CharacterCreation_screen : Screen
         currentChar.MaxHP = Int32.Parse(maxHPInputField.text);
         currentChar.isPC = _pCorNpcBtt.IsPCThisCharacter();
 
-        currentChar.id = _characterPool.AddCharacterIDCount();
+        
+        SetIDToNewCharacter(currentChar);
         _characterPool.AddNewCharacter(currentChar);
         
         SaveSystem.SaveCharacters(_characterPool.GetAllCharacters());
         
         BackToMainMenu();
+    }
+
+    private void SetIDToNewCharacter(Character c)
+    {
+        currentChar.id = _characterPool.AddCharacterIDCount();
+
+        foreach (Character character in _characterPool.GetAllCharacters())
+        {
+            if (character.id == c.id)
+            {
+                SetIDToNewCharacter(c);
+                return;
+            }
+        }
     }
 
     private void BackToMainMenu()

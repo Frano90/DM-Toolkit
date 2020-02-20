@@ -41,11 +41,12 @@ public class CharacterRooster_screen : Screen
         {
             if (template.isSelected)
             {
-                for (int i = _characterPool.GetAllCharacters().Count -1; i > 0; i--)
+                for (int i = _characterPool.GetAllCharacters().Count-1; i >= 0; i--)
                 {
                     if (template.ID == _characterPool.GetAllCharacters()[i].id)
                     {
                         Debug.Log("Se va el personaje "  + _characterPool.GetAllCharacters()[i].characterName);
+                        RemovePartiesWithErasedCharacters(_characterPool.GetAllCharacters()[i]);
                         _characterPool.GetAllCharacters().RemoveAt(i);
                     }
                 }
@@ -53,6 +54,24 @@ public class CharacterRooster_screen : Screen
         }
         SaveSystem.SaveCharacters(_characterPool.GetAllCharacters());
         ReturnToMainMenu();
+    }
+
+    private void RemovePartiesWithErasedCharacters(Character character)
+    {
+        for (int i = _characterPool.GetAllParties().Count -1; i >= 0; i--)
+        {
+            for (int j = 0; j < _characterPool.GetAllParties()[i].integrantes.Count; j++)
+            {
+                if (character.id == _characterPool.GetAllParties()[i].integrantes[j].charID)
+                {
+                    Debug.Log("La party " + _characterPool.GetAllParties()[i].PartyName + " fue dada de baja");
+                    _characterPool.GetAllParties().RemoveAt(i);
+                    break;
+                }
+            }
+        }
+        
+        SaveSystem.SaveParties(_characterPool.GetAllParties());
     }
     
     private void ReturnToMainMenu()

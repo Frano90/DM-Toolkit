@@ -353,6 +353,7 @@ MonoBehaviour:
   - {fileID: 4003084638096967163, guid: 5848501ef3c6d4a42a84a0de806b1970, type: 3}
   - {fileID: 398921701757099292, guid: 6771184b15ebf473587e6cf00ebe2b70, type: 3}
   - {fileID: 6492614277721863390, guid: 43aae58f2ee18489da75c5d754974bb6, type: 3}
+  - {fileID: 3291227990926691, guid: 9144bd1bbeba6443390c5193365daa1b, type: 3}
   canvas: {fileID: 508828088}
 --- !u!114 &1115696497
 MonoBehaviour:

@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PartySelection_screen : Screen
+public class PartyRooster_screen : Screen
 {
     [SerializeField] private PartyTemplate _partyTemplate_prefab;
-    private List<PartyDATA> parties = new List<PartyDATA>();
     [SerializeField] private Transform parent;
     private List<PartyTemplate> _partyTemplates = new List<PartyTemplate>();
 
-    [SerializeField] private Button confirm_btt;
-    [SerializeField] private Button cancel_btt;
+    [SerializeField] private Button deleteParties_btt;
+    [SerializeField] private Button mainMenu_btt;
 
     private void Start()
     {
-        confirm_btt.onClick.AddListener(ConfirmPartiesSelected);
-        cancel_btt.onClick.AddListener(GoBackToMainMenu);
+        deleteParties_btt.onClick.AddListener(DeletePartiesSelected);
+        mainMenu_btt.onClick.AddListener(GoBackToMainMenu);
     }
 
     private void GoBackToMainMenu()
@@ -25,34 +23,36 @@ public class PartySelection_screen : Screen
         Screen_controller.instance.ChangeScreen(ScreenType.MainMenu);
     }
 
-    private void ConfirmPartiesSelected()
+    private void DeletePartiesSelected()
     {
-        List<CharIDandAmount> battleCharacters = new List<CharIDandAmount>();
-        
-        foreach (PartyTemplate pt in _partyTemplates)
+        for (int j = _partyTemplates.Count - 1; j >= 0; j--)
         {
-            if (pt.isSelected)
+            if (_partyTemplates[j].isSelected)
             {
-                foreach (CharIDandAmount c in pt.members)
+                for (int i = _characterPool.GetAllParties().Count - 1; i >= 0; i--)
                 {
-                    battleCharacters.Add(c);
+                    if (_characterPool.GetAllParties()[i].PartyName == _partyTemplates[j].partyName)
+                    {
+                        _characterPool.GetAllParties().RemoveAt(i);
+                    }
                 }
             }
         }
-        _characterPool.SetPartiesToBattle(battleCharacters);
-        Screen_controller.instance.ChangeScreen(ScreenType.Battle);
+
+        SaveSystem.SaveParties(_characterPool.GetAllParties());
+        GoBackToMainMenu();
     }
 
     public override void Init()
     {
-        parties = _characterPool.GetAllParties();
         Populate();
     }
 
     private void Populate()
     {
-        foreach (PartyDATA party in parties)
+        foreach (PartyDATA party in _characterPool.GetAllParties())
         {
+            
             if (!ValidateParty(party))
                 continue;
             
@@ -99,4 +99,5 @@ public class PartySelection_screen : Screen
         }
         _partyTemplates.Clear();
     }
+
 }

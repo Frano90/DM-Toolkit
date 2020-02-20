@@ -14,8 +14,10 @@ public class BattleEntity : MonoBehaviour
     [SerializeField] private Button addHp_btt;
     [SerializeField] private Button restHp_btt;
     [SerializeField] private Button addCondition_btt;
+    [SerializeField] private Button delete_btt;
 
     public event Action<BattleEntity> onPressedConditionPanelToggle = delegate { };
+    public event Action<BattleEntity> onPressedDelete = delegate { };
 
     private Condition_handler _conditionHandler;
 
@@ -57,6 +59,7 @@ public class BattleEntity : MonoBehaviour
         addHp_btt.onClick.AddListener(AddHp);
         restHp_btt.onClick.AddListener(MinusHp);
         addCondition_btt.onClick.AddListener(PressedConditionPanel_btt);
+        delete_btt.onClick.AddListener(PressedDelete);
         _conditionHandler = GetComponent<Condition_handler>();
         conditions = new List<ConditionDATA>();
     }
@@ -77,6 +80,11 @@ public class BattleEntity : MonoBehaviour
     private void PressedConditionPanel_btt()
     {
         onPressedConditionPanelToggle(this);
+    }
+    
+    private void PressedDelete()
+    {
+        onPressedDelete(this);
     }
     
     

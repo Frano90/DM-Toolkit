@@ -10,12 +10,14 @@ public class MainMenu_screen : Screen
     [SerializeField] private Button createParty;
     [SerializeField] private Button startBattle;
     [SerializeField] private Button characterRooster;
+    [SerializeField] private Button partyRooster;
     private void Start()
     {
         createCharacter.onClick.AddListener(CreateNewCharacter);
         createParty.onClick.AddListener(CreateNewParty);
         startBattle.onClick.AddListener(StartBattle);
         characterRooster.onClick.AddListener(GoToCharacterRooster);
+        partyRooster.onClick.AddListener(GoToPartyRooster);
     }
 
     private void CreateNewCharacter()
@@ -37,6 +39,11 @@ public class MainMenu_screen : Screen
     private void GoToCharacterRooster()
     {
         Screen_controller.instance.ChangeScreen(ScreenType.CharacterRooster);
+    }
+    
+    private void GoToPartyRooster()
+    {
+        Screen_controller.instance.ChangeScreen(ScreenType.PartiesRooster);
     }
     
 }
