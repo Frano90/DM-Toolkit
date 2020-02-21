@@ -16,6 +16,8 @@ public class BattleEntity : MonoBehaviour
     [SerializeField] private Button addCondition_btt;
     [SerializeField] private Button delete_btt;
 
+    [SerializeField] private GameObject pjTerminatedFrame;
+
     public event Action<BattleEntity> onPressedConditionPanelToggle = delegate { };
     public event Action<BattleEntity> onPressedDelete = delegate { };
 
@@ -84,7 +86,8 @@ public class BattleEntity : MonoBehaviour
     
     private void PressedDelete()
     {
-        onPressedDelete(this);
+        pjTerminatedFrame.SetActive(!pjTerminatedFrame.activeInHierarchy);
+     //   onPressedDelete(this);
     }
     
     

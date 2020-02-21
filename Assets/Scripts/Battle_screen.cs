@@ -124,15 +124,13 @@ public class Battle_screen : Screen
 
     private void PassTurnToNextInLine()
     {
-        //Quede aca. La queue queda vacia
-        if (colaDeIniciativa.Count == 0)
-            return;
+        while (colaDeIniciativa.Peek() == null)
+        {
+            colaDeIniciativa.Dequeue();
+        }
         
         BattleEntity entToLastInLine = colaDeIniciativa.Dequeue();
-        while (entToLastInLine == null)
-        {
-            entToLastInLine = colaDeIniciativa.Dequeue();
-        }
+        
         
         entToLastInLine.transform.SetParent(characterParent_aux);
         entToLastInLine.transform.SetParent(characterParent);
@@ -140,6 +138,7 @@ public class Battle_screen : Screen
         
         if (colaDeIniciativa.Count == 0)
         {
+            Debug.Log("Entro aca");
             turnCounter++;
             RestartTurnQueue();
         }
@@ -166,8 +165,20 @@ public class Battle_screen : Screen
 
     private void RemoveEntityFromBattle(BattleEntity ent)
     {
-        _battleEntities.Remove(ent);
-        Destroy(ent.gameObject);
+        //arreglar esto
+        
+//        _battleEntities.Remove(ent);
+//        Destroy(ent.gameObject);
+//
+//        
+//        if (_currentEntityTurn == ent)
+//        {
+//            colaDeIniciativa.Dequeue();
+//            Debug.Log("borraste el primero");
+//            _currentEntityTurn = colaDeIniciativa.Peek();
+//            Debug.Log("El primero es " + _currentEntityTurn.characterName);
+//        }
+        
     }
     
     
